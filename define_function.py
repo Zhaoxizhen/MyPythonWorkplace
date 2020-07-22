@@ -27,3 +27,20 @@ sorted_list = select_sort.sort(list1)
 sorted_list.reverse()
 result = search(sorted_list, 78, 0, len(sorted_list)-1)
 print(result)
+
+
+def greatest_common_divider(x, y):
+    if x == y:
+        return x
+    elif x > y:
+        n = y
+    else:
+        n = x
+    while n > 0:
+        if x % n == 0:
+            if y % n == 0:
+                return n
+        n -= 1
+
+
+print(greatest_common_divider(81, 27))
