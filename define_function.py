@@ -44,3 +44,5 @@ def greatest_common_divider(x, y):
 
 
 print(greatest_common_divider(81, 27))
+print(greatest_common_divider(6, 9))
+print(greatest_common_divider(1680, 640))

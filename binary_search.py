@@ -14,11 +14,11 @@ def search(list_to_search, target, left, right):
     middle_num = list_to_search[middle]
     if left == right:
         return None
-    if target == middle_num:
+    if target == middle_num:  # 基线条件
         return middle
-    elif target > middle_num:
+    elif target > middle_num:  # 递归条件
         return search(list_to_search, target, middle + 1, right)
-    elif target < middle_num:
+    elif target < middle_num:  # 递归条件
         return search(list_to_search, target, left, middle)
 
 
