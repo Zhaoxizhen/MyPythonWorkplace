@@ -34,13 +34,13 @@ print(find_max_num(arr3))
 
 
 def quick_sort(arr):
-    if len(arr) < 2:
+    if len(arr) < 2:  # 基线条件
         return arr
     elif len(arr) == 2:
         if arr[0] > arr[1]:
             arr[0], arr[1] = arr[1], arr[0]
         return arr
-    else:
+    else:  # 递归条件
         base = arr[0]
         arr_s = []
         arr_e = []
@@ -59,3 +59,4 @@ arr4 = range(100)
 arr4 = list(reversed(arr4))
 print(arr4)
 print(quick_sort(arr4))
+
