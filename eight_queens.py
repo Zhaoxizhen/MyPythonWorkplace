@@ -15,20 +15,27 @@ def print_queen(arr, num):
 
 global count
 count = 0
+global recursion_count
+recursion_count = 0
 
 
 def queen(num, arr, n):
     global count
+    global recursion_count
+    recursion_count += 1
     if len(arr) == num:  # 基线条件:放满num个
         count += 1
         print_queen(arr, num)
+        print('递归次数', recursion_count)
         # yield arr
         n = arr.pop() + 1
-        if len(arr) == 0 and n == num:
+        if len(arr) == 1 and n >= num:
             return
         return queen(num, arr, n)
     else:
-        if len(arr) == 0 and n >= num:
+        if len(arr) == 0:
+            return
+        if len(arr) == 1 and n >= num:
             return
         if n >= num:  # 如果在此行都没有找到合适位置,则返回上一层,尝试下一个位置
             p = arr.pop() + 1
@@ -57,7 +64,9 @@ sys.setrecursionlimit(100000000)
 # for i1 in queen(8, [], 0):
 #     print(i1)
 # print(i1)
-queen(8, [], 0)
+for i1 in range(8):
+    queen(8, [i1], 0)
+# queen(8, [], 0)
 
 
 # result = queen(arr0, 0, 0)
