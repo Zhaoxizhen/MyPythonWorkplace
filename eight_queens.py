@@ -1,11 +1,11 @@
 import sys
 
 
-def print_queen(arr):
+def print_queen(arr, num):
     global count
     print('找到第', count, '个解:', arr)
-    for i in range(8):
-        for j in range(8):
+    for i in range(num):
+        for j in range(num):
             if arr[i] == j:
                 print("1 ", end='')
             else:
@@ -21,13 +21,15 @@ def queen(num, arr, n):
     global count
     if len(arr) == num:  # 基线条件:放满num个
         count += 1
-        print_queen(arr)
+        print_queen(arr, num)
         # yield arr
         n = arr.pop() + 1
-        if len(arr) == 0 and n >= num:
+        if len(arr) == 0 and n == num:
             return
         return queen(num, arr, n)
     else:
+        if len(arr) == 0 and n >= num:
+            return
         if n >= num:  # 如果在此行都没有找到合适位置,则返回上一层,尝试下一个位置
             p = arr.pop() + 1
             return queen(num, arr, p)
@@ -43,9 +45,7 @@ def queen(num, arr, n):
 def check_queen(arr, y):  # 检测将要放入的皇后位置是否冲突
     index = len(arr)
     for i in range(index):  # index=0时不进入循环直接返回True
-        if abs(arr[i] == y):  # 在同一列
-            return False
-        if abs(arr[i] - y) == abs(i - index):  # 在同一斜行
+        if abs(arr[i] == y) or abs(arr[i] - y) == abs(i - index):  # 在同一列或同一斜行
             return False
     return True
 
